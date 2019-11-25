@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="EN">
+	<head>
+	    <meta charset="utf-8">
+	    <title>轮播图</title>
+	    <style type="text/css">
+	    .slider-box {
+	    	width: 1200px;
+	    	height: 400px;
+	    	position: relative;
+	    	overflow: hidden;
+	    }
+	    #list  {
+	    	width: 8400px;
+	    	height: 400px;
+	    	margin: 0;
+	    	padding: 0;
+	    	position: absolute;
+	    }
+	    #list div.cell {
+	    	width: 1200px;
+	    	height: 400px;
+	    	float: left;
+	    	list-style: none;
+	    }
+	    .arrow {
+	    	cursor: pointer;
+	    	font-size: 36px;
+	    	line-height: 50px;
+	    	text-align: center;
+	    	width: 40px;
+	    	height: 50px;
+	    	position: absolute;
+	    	z-index: 10;
+	    	background: #000000;
+	    	opacity: 0.5;
+	    	text-decoration: none;
+	    	color: #ffffff;
+	    	top: 170px;
+	    }
+	    #prev {
+	    	left: 20px;
+	    }
+	    #next {
+	    	right: 20px;
+	    }
+	    #buttons {
+	    	width: 100px;
+	    	height: 10px;
+	    	position: absolute;
+	    	z-index: 100;
+	    	bottom: 20px;
+	    	right: 10px;
+	    }
+	     #buttons span {
+	     	background: #666;
+	     	width: 10px;
+	     	height: 10px;
+	     	cursor: pointer;
+	     	display: inline-block;
+	     	border-radius: 50px;
+	     	opacity: 0.5;
+	     	margin-right: 5px;
+	     }
+	     #buttons span.on {
+	     	background: #ffffff;
+	     }
+
+	     .item-cell img{
+		  max-width:100%;
+		}
+		.item-cell{
+		  float:left;
+		  width:15%;
+		  margin:7px;
+		}
+	    </style>
+	    <script type="text/javascript">
+	    	window.onload = function(){
+	    		var container = document.getElementById('container');
+	    		var list = document.getElementById('list');
+	    		var buttons = document.getElementById('buttons').getElementsByTagName('span');
+	    		var prev = document.getElementById('prev');
+	    		var next = document.getElementById('next');
+
+	    		var index = 1;//点
+
+	    		function showButton() {
+	    			for (var i = 0; i < buttons.length; i++) {
+	    				if (buttons[i].className == 'on') {
+	    					buttons[i].className = '';
+		    				break;
+	    				}	
+	    			}
+
+	    			buttons[index - 1].className = 'on';
+	    		}//点
+
+	    		function animate(offset) {
+	    			var newlist = parseInt(list.style.left) + offset;
+	    			list.style.left = newlist +'px';
+
+	    			if (newlist > 0) {
+	    				list.style.left = -4800 + 'px';
+	    			}
+	    			if (newlist < -4800) {
+	    				list.style.left = 0 + 'px';
+	    			}//判断，循环点击
+	    		}
+	    		next.onclick = function() {
+	    			if (index == 5 ){
+	    				index = 1;
+	    			}
+	    			else {
+	    				index += 1;
+	    			}
+	    			showButton();//点
+
+	    			animate(-1200);
+	    		}
+	    		prev.onclick = function() {
+	    			if (index == 1 ){
+	    				index = 5;
+	    			}
+	    			else {
+	    				index -= 1;
+	    			}
+	    			showButton();//点
+	    			
+	    			animate(1200);
+	    		}
+	    	}
+	    </script>
+  	</head>
+  	<body>
+        <div class="slider-box" id="container">
+            <div id="list" style="left:0px;">
+            	<!-- <div class = "cell" style="background-color:plum;">5</div> -->
+                <div class = "cell" style="background-color:yellowgreen;">
+                	<div class="item-cell">
+	                	<a href=""><img src="https://images.chiccdn.com/thumb/large/oaupload/ser1/yoins/images/4B/DF/d848e467-b9bd-44fb-bbb3-fa2306f50559.jpg.webp" alt=""></a>
+	                	<p>1</p>
+	                </div>
+	                <div class="item-cell">
+	                    <a href=""><img src="https://images.chiccdn.com/thumb/large/oaupload/ser1/yoins/images/6C/D9/061b9311-48e7-4a37-9f87-37f5eb71de08.png.webp" alt=""></a>
+	                    <p>1</p>
+	                </div>
+	                <div class="item-cell">
+	                    <a href=""><img src="https://images.chiccdn.com/thumb/large/oaupload/yoins/images/72/60/1af8ae38-6223-4a6c-be0a-c2cd5d91d9de.jpeg.webp" alt=""></a>
+	                    <p>1</p>
+	                </div>
+	                <div class="item-cell">
+	                    <a href=""><img src="https://images.chiccdn.com/thumb/large/oaupload/yoins/images/B5/19/1dda255d-47d6-4116-8f64-62faf10ac2c7.jpg.webp" alt=""></a>
+	                    <p>1</p>
+	                </div>
+	                <div class="item-cell">
+	                    <a href=""><img src="https://images.chiccdn.com/thumb/large/oaupload/ser1/yoins/images/46/6B/5a7eec40-bdbe-4e5b-8410-67a193e8779c.jpg.webp" alt=""></a>
+	                    <p>1</p>
+	                </div>
+	                <div class="item-cell">
+	                    <a href=""><img src="https://images.chiccdn.com/thumb/large/oaupload/ser1/yoins/images/35/EC/73a8d681-6ff3-4fff-82f8-378e28ae1793.png.webp" alt=""></a>
+	                    <p>1</p>
+	                </div>
+                </div>
+                <div class = "cell" style="background-color:pink;">
+                	<div class="item-cell">
+	                	<a href=""><img src="https://images.chiccdn.com/thumb/large/oaupload/ser1/yoins/images/4B/DF/d848e467-b9bd-44fb-bbb3-fa2306f50559.jpg.webp" alt=""></a>
+	                	<p>2</p>
+	                </div>
+	                <div class="item-cell">
+	                    <a href=""><img src="https://images.chiccdn.com/thumb/large/oaupload/ser1/yoins/images/6C/D9/061b9311-48e7-4a37-9f87-37f5eb71de08.png.webp" alt=""></a>
+	                    <p>2</p>
+	                </div>
+	                <div class="item-cell">
+	                    <a href=""><img src="https://images.chiccdn.com/thumb/large/oaupload/yoins/images/72/60/1af8ae38-6223-4a6c-be0a-c2cd5d91d9de.jpeg.webp" alt=""></a>
+	                    <p>2</p>
+	                </div>
+	                <div class="item-cell">
+	                    <a href=""><img src="https://images.chiccdn.com/thumb/large/oaupload/yoins/images/B5/19/1dda255d-47d6-4116-8f64-62faf10ac2c7.jpg.webp" alt=""></a>
+	                    <p>2</p>
+	                </div>
+	                <div class="item-cell">
+	                    <a href=""><img src="https://images.chiccdn.com/thumb/large/oaupload/ser1/yoins/images/46/6B/5a7eec40-bdbe-4e5b-8410-67a193e8779c.jpg.webp" alt=""></a>
+	                    <p>2</p>
+	                </div>
+	                <div class="item-cell">
+	                    <a href=""><img src="https://images.chiccdn.com/thumb/large/oaupload/ser1/yoins/images/35/EC/73a8d681-6ff3-4fff-82f8-378e28ae1793.png.webp" alt=""></a>
+	                    <p>2</p>
+	                </div>
+                </div>
+                <div class = "cell" style="background-color:skyblue;">3</div>
+                <div class = "cell" style="background-color:greenyellow;">4</div>
+                <div class = "cell" style="background-color:plum;">5</div>
+                <!-- <div class = "cell" style="background-color:yellowgreen;">1</div> -->
+            </div>
+            <div id="buttons">
+            	<span index="1" class="on"></span>
+            	<span index="2"></span>
+            	<span index="3"></span>
+            	<span index="4"></span>
+            	<span index="5"></span>
+            </div>
+            <a href="javascript:;" class="arrow" id="prev"><</a>
+            <a href="javascript:;" class="arrow" id="next">></a>
+        </div>
+
+
+        <div id="test-block">
+        	<h1>我是block 1</h1>
+        	<h1>我是block 2</h1>
+        	<h1>我是block 3</h1>
+        </div>
+
+        <div id="test-block">
+        	<span>我是inline 1</span>
+        	<span>我是inline 2</span>
+        	<span>我是inline 3</span>
+        </div>
+        
+    </body>
+</html> 
